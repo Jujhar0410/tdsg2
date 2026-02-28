@@ -1,0 +1,26 @@
+name: Scrape Table Sums with Playwright
+
+on: [push]  # Runs on every push to any branch
+
+jobs:
+  scrape:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Verify tables by 22f2001041@ds.study.iitm.ac.in  # Your email here!
+        run: npm install
+        
+      - name: Launch Playwright scraper
+        run: npm run scrape
+        
+      - name: Upload logs if failed
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-logs
+          path: |
+            playwright-report/
+            test-results/
