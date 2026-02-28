@@ -12,7 +12,8 @@ jobs:
       
       - name: Verify tables by 22f2001041@ds.study.iitm.ac.in  # Your email here!
         run: npm install
-        
+      - name: install Playwright scraper
+        run: npx playwright install
       - name: Launch Playwright scraper
         run: npm run scrape
         
