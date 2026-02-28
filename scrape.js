@@ -1,5 +1,6 @@
 const { chromium } = require('playwright');
 
+
 async function scrapeAndSum(url) {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
